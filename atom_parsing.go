@@ -8,14 +8,12 @@ import (
 )
 
 type CompanyResult struct {
-  XMLName xml.Name      `xml:"feed"`
-  Info    CompanyInfo   `xml:"company-info"`
+  Info    companyInfo   `xml:"company-info"`
   Title   string        `xml:"title"`
   Updated time.Time     `xml:"updated"`
 }
 
-type CompanyInfo struct {
-  XMLName         xml.Name          `xml:"company-info"`
+type companyInfo struct {
   Cik             string            `xml:"cik"`
   Name            string            `xml:"conformed-name"`
   FiscalYearEnd   string            `xml:"fiscal-year-end"`
@@ -23,10 +21,10 @@ type CompanyInfo struct {
   SicDescription  string            `xml:"assigned-sic-desc"`
   StateLocation   string            `xml:"state-location"`
   StateOfIncorp   string            `xml:"state-of-incorporation"`
-  Addresses       []StreetAddress  `xml:"addresses>address"`
+  Addresses       []streetAddress  `xml:"addresses>address"`
 }
 
-type StreetAddress struct {
+type streetAddress struct {
   Type            string      `xml:"type,attr"`
   City            string      `xml:"city"`
   State           string      `xml:"state"`
