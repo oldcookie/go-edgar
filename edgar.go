@@ -64,6 +64,12 @@ func parseCIKList(r io.Reader, fn CIKEntryHandler) {
   }
 }
 
+/*
+  Get the company summary from EDGAR.
+
+  Company info can be retrieved by either CIK, or the Ticker.  Either can
+  be used for the cik argument.  Returns CompanryResult, nil if successful.
+*/
 func GetCompany(cik string) (*CompanyResult, error) {
   resp, err := http.Get(strings.Replace(getCompanyUrl, cikPH, cik, -1))
   if err != nil {
