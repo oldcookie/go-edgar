@@ -29,12 +29,12 @@ type NoCallHandler struct {
 }
 
 func (h *NoCallHandler) ProcessCIKEntry(cik, name string, line int) {
-	h.t.Errorf("This handler shouldn't be called")
+	h.t.Errorf("This handler shouldn't be called, %s, %s, %d", cik, name, line)
 }
 
 func TestGetCIKList(t *testing.T) {
 	if testing.Short() {
-		t.Skip("Skipping actual download and parsing of CIK file list in shor mode")
+		t.Skip("Skipping actual download and parsing of CIK file list in short mode")
 	} else {
 		code, err := GetCIKList(&NoCallHandler{t}, time.Now())
 		if code != 304 {
